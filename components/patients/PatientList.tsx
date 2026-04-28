@@ -47,17 +47,22 @@ export function PatientList({ patients }: { patients: Patient[] }) {
                 <TableCell className="text-muted-foreground">{formatDate(patient.date_naissance)}</TableCell>
                 <TableCell className="text-muted-foreground">{patient.telephone ?? "—"}</TableCell>
                 <TableCell>
-                  <form
-                    action={async () => {
-                      if (confirm(`Supprimer ${patient.prenom} ${patient.nom} ?`)) {
-                        await deletePatient(patient.id)
-                      }
-                    }}
-                  >
-                    <Button variant="ghost" size="sm" type="submit" className="text-destructive hover:text-destructive">
-                      Supprimer
+                  <div className="flex items-center gap-1">
+                    <Button asChild size="sm" variant="ghost">
+                      <Link href={`/patients/${patient.id}`}>Voir</Link>
                     </Button>
-                  </form>
+                    <form
+                      action={async () => {
+                        if (confirm(`Supprimer ${patient.prenom} ${patient.nom} ?`)) {
+                          await deletePatient(patient.id)
+                        }
+                      }}
+                    >
+                      <Button variant="ghost" size="sm" type="submit" className="text-destructive hover:text-destructive">
+                        Supprimer
+                      </Button>
+                    </form>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}
