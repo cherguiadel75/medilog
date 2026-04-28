@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
-import { PatientList } from "@/components/patients/PatientList"
+import { PatientSearch } from "@/components/patients/PatientSearch"
 import { Button } from "@/components/ui/button"
 
 export default async function PatientsPage() {
@@ -25,7 +25,7 @@ export default async function PatientsPage() {
         </Button>
       </div>
 
-      <PatientList patients={patients ?? []} />
+      <PatientSearch patients={patients ?? []} />
     </div>
   )
 }

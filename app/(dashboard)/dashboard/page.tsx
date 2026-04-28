@@ -2,16 +2,20 @@ import { createClient } from "@/lib/supabase/server"
 import { PatientRecentList } from "@/components/dashboard/PatientRecentList"
 import { AlertsPanel } from "@/components/dashboard/AlertsPanel"
 import { StatsCards } from "@/components/dashboard/StatsCards"
+import { getAIAlerts } from "@/app/actions/alerts"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  const { data: patients } = await supabase
-    .from("patients")
-    .select("*")
-    .eq("practitioner_id", user!.id)
-    .order("created_at", { ascending: false })
+  const [{ data: patients }, alerts] = await Promise.all([
+    supabase
+      .from("patients")
+      .select("*")
+      .eq("practitioner_id", user!.id)
+      .order("created_at", { ascending: false }),
+    getAIAlerts(),
+  ])
 
   const recentPatients = patients?.slice(0, 5) ?? []
   const totalPatients = patients?.length ?? 0
@@ -30,7 +34,7 @@ export default async function DashboardPage() {
           <PatientRecentList patients={recentPatients} />
         </div>
         <div>
-          <AlertsPanel />
+          <AlertsPanel alerts={alerts} />
         </div>
       </div>
     </div>
