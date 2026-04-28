@@ -10,7 +10,7 @@ export default function NewPatientPage() {
           <Link href="/patients">← Retour</Link>
         </Button>
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Nouveau patient</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-[#1e3a5f]">Nouveau patient</h1>
           <p className="text-muted-foreground text-sm">Remplir les informations du patient</p>
         </div>
       </div>

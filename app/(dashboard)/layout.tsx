@@ -13,7 +13,7 @@ export default async function DashboardLayout({
   if (!user) redirect("/login")
 
   return (
-    <div className="min-h-screen bg-muted/40">
+    <div className="min-h-screen bg-background">
       <Navbar user={user} />
       <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
     </div>

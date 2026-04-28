@@ -36,7 +36,7 @@ export default async function PatientDetailPage({
         <Button asChild variant="outline" size="sm">
           <Link href="/patients">← Retour</Link>
         </Button>
-        <h1 className="text-2xl font-bold tracking-tight">
+        <h1 className="text-2xl font-bold tracking-tight text-[#1e3a5f]">
           {patient.prenom} {patient.nom}
         </h1>
       </div>

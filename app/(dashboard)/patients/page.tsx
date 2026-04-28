@@ -17,7 +17,7 @@ export default async function PatientsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Patients</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-[#1e3a5f]">Patients</h1>
           <p className="text-muted-foreground text-sm">{patients?.length ?? 0} patient(s) enregistré(s)</p>
         </div>
         <Button asChild>
