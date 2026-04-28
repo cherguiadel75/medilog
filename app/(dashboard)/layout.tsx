@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
-import { Navbar } from "@/components/dashboard/Navbar"
+import { Sidebar } from "@/components/dashboard/Sidebar"
 
 export default async function DashboardLayout({
   children,
@@ -14,8 +14,11 @@ export default async function DashboardLayout({
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar user={user} />
-      <main className="max-w-6xl mx-auto px-4 py-8">{children}</main>
+      <Sidebar user={user} />
+      {/* md:ml-60 compense la sidebar fixe desktop ; pt-14 compense la topbar mobile */}
+      <main className="md:ml-60 pt-14 md:pt-0">
+        <div className="max-w-5xl mx-auto px-6 py-8">{children}</div>
+      </main>
     </div>
   )
 }
